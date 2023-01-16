@@ -12,7 +12,7 @@ module.exports.enforce = async function () {
     const baseRef = pullRequest.base.ref;
 
     if (!labelNames.includes(skipLabel)) {
-      const masterVersion = await execute('git', ['show', `origin/master:package.json`], getVersion);
+      const masterVersion = await execute('git', ['show', `origin/main:package.json`], getVersion);
       const curVersion = await execute('cat', ['package.json'], getVersion);
       const changelogUpdated = await execute('git', ['diff', `origin/${baseRef}`, '--name-status', '--diff-filter=AM'], checkChangelog);
 
